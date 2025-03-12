@@ -24,6 +24,8 @@ public class MyPlayer {
         row = 1;
         column = 1;
 
+        toColumns();
+
         /***
          * This code will run each time the "MyPlayer" button is pressed.
          * Add your code to return the row and the column of the chip you want to take.
@@ -32,6 +34,28 @@ public class MyPlayer {
 
         Point myMove = new Point(row, column);
         return myMove;
+    }
+
+    public void toColumns(){
+
+        for(int x=0; x<10; x++){
+            columns[x]=0;
+        }
+
+        for(int r=0; r<gameBoard[0].length; r++){
+            for (int c=0; c<gameBoard[r].length; c++){
+                if(gameBoard[r][c].isAlive){
+                    System.out.println("("+r+", "+c+")");
+                    columns[c]++;
+                }
+            }
+        }
+
+        for(int x=0; x<10; x++){
+            System.out.print(columns[x]+", ");
+        }
+        System.out.println();
+
     }
 
 }
