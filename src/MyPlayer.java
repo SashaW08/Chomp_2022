@@ -1,8 +1,10 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MyPlayer {
     public Chip[][] gameBoard;
     public int[] columns;
+    ArrayList<String> boards;
 
     public MyPlayer() {
         columns = new int[10];
@@ -25,6 +27,7 @@ public class MyPlayer {
         column = 1;
 
         toColumns();
+        threebythreeallboards();
 
         /***
          * This code will run each time the "MyPlayer" button is pressed.
@@ -55,6 +58,10 @@ public class MyPlayer {
             System.out.print(columns[x]+", ");
         }
         System.out.println();
+
+    }
+
+    public void threebythreeallboards(){
 
     }
 
