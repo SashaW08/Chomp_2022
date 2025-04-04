@@ -63,31 +63,16 @@ public class MyPlayer {
 
     public void threebythreeallboards(){
 
-        /**the column to the right has a number of chips that is always any number less than or equal to the column directly to the left**/
-        /**how to make it not repeat boards?**/
-        /**put all of the boards into an array list, and then say if one matches to any of the others, nothing, if no match, then sout what it is**/
-
-        while(true){
-
-            columns[0]=(int)(Math.random()*4);
-            columns[1]=(int)(Math.random()*4);
-            columns[2]=(int)(Math.random()*4);
-
-            if(columns[2]<=columns[1]&&columns[1]<=columns[0]){
-                threethreeboards.add(String.valueOf(columns[0])+String.valueOf(columns[1])+String.valueOf(columns[2]));
-
-                for(int z=0; z<=18; z++) {
-                    for(int y=0; y<=18; y++)
-                    if (threethreeboards.get(z)==threethreeboards.get(y)){
-                        System.out.println("oops");
-                        threethreeboards.remove(z);
-                    }else{
-                        System.out.println("("+columns[0]+columns[1]+columns[2]+")");
+        for(int z=1; z<=3; z++){
+            for(int t=0; t<=z; t++){
+                for(int p=0; p<=t; p++){
+                    String one = String.valueOf(z);
+                    String two = String.valueOf(t);
+                    String three = String.valueOf(p);
+                    System.out.println(one+two+three);
                     }
                 }
             }
-
-        }
 
     }
 
