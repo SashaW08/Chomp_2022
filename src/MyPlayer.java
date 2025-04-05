@@ -66,10 +66,10 @@ public class MyPlayer {
         for(int z=1; z<=3; z++){
             for(int t=0; t<=z; t++){
                 for(int p=0; p<=t; p++){
-                    String one = String.valueOf(z);
-                    String two = String.valueOf(t);
-                    String three = String.valueOf(p);
-                    System.out.println(one+two+three);
+                    System.out.println(z+""+t+""+p);
+                    System.out.println(); //probably something related to z, t, and p here for the best move coordinates
+                    //whats the pattern??
+                    //To the "death" boards matter?
                     }
                 }
             }
