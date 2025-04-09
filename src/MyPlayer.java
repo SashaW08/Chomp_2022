@@ -75,8 +75,8 @@ public class MyPlayer {
                                 if(q == z && e == t && b == p) {}else {
                                     if (q<z && e<t && q!=e) {}else {
                                         if (e<t && b<p && e!=b) {}else {
-                                            if (q < z && b < p && q != b) {} else {
-                                                System.out.println(q + "" + e + "" + b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
+                                            if (q<z&&b<p&&q!=b) {} else {
+                                                System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
                                             }
                                         }
                                     }
