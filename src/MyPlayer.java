@@ -67,9 +67,6 @@ public class MyPlayer {
             for(int t=0; t<=z; t++){
                 for(int p=0; p<=t; p++){
                     System.out.println(z+""+t+""+p);
-                    System.out.println(); //probably something related to z, t, and p here for the best move coordinates
-                    //whats the pattern??
-                    //To the "death" boards matter?
                     }
                 }
             }
