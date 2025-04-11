@@ -64,19 +64,21 @@ public class MyPlayer {
     public void threebythreeallboards(){
 
         for(int z=1; z<=3; z++) {
-            for (int t = 0; t <= z; t++) {
-                for (int p = 0; p <= t; p++) {
-                    System.out.println(z + "" + t + "" + p); //this makes the 19 boards
+            for (int t=0; t<=z; t++) {
+                for (int p=0; p<=t; p++) {
+                    System.out.println(z+""+t+""+p);//this makes the 19 boards
+                    threethreeboards.add(z+""+t+""+p);
                     System.out.println("top*********");
 
                     for(int q=1; q<=z; q++) {
                         for (int e=0; e<=t&&e<=q; e++) {
                             for (int b=0; b<=e&&b<=p; b++) {
-                                if(q == z && e == t && b == p) {}else {
+                                if(q==z && e==t && b==p) {}else {
                                     if (q<z && e<t && q!=e) {}else {
                                         if (e<t && b<p && e!=b) {}else {
-                                            if (q<z&&b<p&&q!=b) {} else {
+                                            if (q<z && b<p && q!=b) {} else {
                                                 System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
+                                                threethreeboards.add(q+""+e+""+b);
                                             }
                                         }
                                     }
