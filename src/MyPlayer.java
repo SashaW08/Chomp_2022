@@ -73,11 +73,11 @@ public class MyPlayer {
                     for(int q=1; q<=z; q++) {
                         for (int e=0; e<=t&&e<=q; e++) {
                             for (int b=0; b<=e&&b<=p; b++) {
-                                if(q==z && e==t && b==p) {}else {
-                                    if (q<z && e<t && q!=e) {}else {
-                                        if (e<t && b<p && e!=b) {}else {
-                                            if (q<z && b<p && q!=b) {} else {
-                                                threethreeboards.add(q+""+e+""+b);
+                                if(!(q==z && e==t && b==p)){
+                                    if (!(q<z && e<t && q!=e)){
+                                        if (!(e<t && b<p && e!=b)){
+                                            if (!(q<z && b<p && q!=b)){
+                                                threethreeboards.add(q+""+e+""+b);//there is also an issue with this one
                                                 System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
                                             }
                                         }
@@ -93,17 +93,9 @@ public class MyPlayer {
             }
         }
 
-        //the next step is to identify which boards are loos boards and which boards are win boards
+        //the next step is to identify which boards are loose boards and which boards are win boards
         //A loose board has only win boards as options
         //A win board has at least one loose board as an option
 
-        for(int g=0; g<=threethreeboards.size(); g++) {
-            if (threethreeboards.get(g) == "100") {
-                System.out.println("100 is a loose board");
-            } else {
-
-            }
-        }
     }
-
 }
