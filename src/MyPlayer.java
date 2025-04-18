@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class MyPlayer {
     public Chip[][] gameBoard;
     public int[] columns;
-    ArrayList<String> threethreeboards;
+    ArrayList<Board> threethreeboards;
 
     public MyPlayer() {
         columns = new int[10];
@@ -66,7 +66,7 @@ public class MyPlayer {
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
                 for (int p=0; p<=t; p++) {
-                    threethreeboards.add(z+""+t+""+p);//there is an issue here
+                    threethreeboards.add(new Board(z,t,p));
                     System.out.println(z+""+t+""+p);//this makes the 19 boards
                     System.out.println("top*********");
 
@@ -77,7 +77,6 @@ public class MyPlayer {
                                     if (!(q<z && e<t && q!=e)){
                                         if (!(e<t && b<p && e!=b)){
                                             if (!(q<z && b<p && q!=b)){
-                                                threethreeboards.add(q+""+e+""+b);//there is also an issue with this one
                                                 System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
                                             }
                                         }
