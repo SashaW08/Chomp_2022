@@ -66,8 +66,13 @@ public class MyPlayer {
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
                 for (int p=0; p<=t; p++) {
-                    threethreeboards.add(new Board(z,t,p));
+                    threethreeboards.add(new Board(z,t,p)); //there is still an issue here
                     System.out.println(z+""+t+""+p);//this makes the 19 boards
+
+                    if(z==1 && t==0 && p==0){
+                        System.out.println(z+t+p+" is a loose board");
+                    }
+
                     System.out.println("top*********");
 
                     for(int q=1; q<=z; q++) {
@@ -78,6 +83,9 @@ public class MyPlayer {
                                         if (!(e<t && b<p && e!=b)){
                                             if (!(q<z && b<p && q!=b)){
                                                 System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
+                                                if(q==1 && e==0 && b==0){
+                                                    System.out.println(z+t+p+" is a loose board");
+                                                }
                                             }
                                         }
                                     }
@@ -95,6 +103,7 @@ public class MyPlayer {
         //the next step is to identify which boards are loose boards and which boards are win boards
         //A loose board has only win boards as options
         //A win board has at least one loose board as an option
+        //The problem is how to tell the computer which boards are loose boards and which boards are win boards
 
     }
 }
