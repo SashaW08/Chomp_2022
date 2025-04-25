@@ -16,4 +16,8 @@ public class Board {
 //        besty=pbesty;
     }
 
+    public void printInfo(){
+        System.out.println(col1+""+col2+col3);
+    }
+
 }
