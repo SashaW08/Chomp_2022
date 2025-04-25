@@ -6,11 +6,13 @@ public class MyPlayer {
     public int[] columns;
     ArrayList<Board> threethreeboards;
     ArrayList<Board> threelooses;
+    ArrayList<Board> threewins;
 
     public MyPlayer() {
         columns = new int[10];
         threethreeboards=new ArrayList<>();
         threelooses=new ArrayList<>();
+        threewins=new ArrayList<>();
 
         /***
          * This code will run just once, when the game opens.
@@ -73,25 +75,30 @@ public class MyPlayer {
                 for (int p=0; p<=t; p++) {
                     threethreeboards.add(new Board(z,t,p));
 
+                    if(z-1==t+p && t==1){
+                        System.out.println("loooooooooooooooooser");
+                    }
+                    if(z+t+p==5){
+                        System.out.println("loooooooooooooooooser");
+                    } //is this allowed for finding the loose boards??
+
                     System.out.println(z+""+t+""+p);//this makes the 19 boards
                     System.out.println("top*********");
 
                     for(int q=1; q<=z; q++) {
                         for (int e=0; e<=t&&e<=q; e++){
                             for (int b=0; b<=e&&b<=p; b++){
-                                if(!(q==z && e==t && b==p)){
-                                    if (!(q<z && e<t && q!=e)){
-                                        if (!(e<t && b<p && e!=b)){
-                                            if (!(q<z && b<p && q!=b)){
-                                                System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
+                                if(!(q==z && e==t && b==p) && !(q<z && e<t && q!=e) && !(e<t && b<p && e!=b) && !(q<z && b<p && q!=b)){
+                                    System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
 
-                                                if(q==threelooses.get(0).col1 && e==threelooses.get(0).col2 && b==threelooses.get(0).col3){
-                                                    System.out.println("loser!!!!!!!!!!!!!");
-                                                }
-
-                                            }
-                                        }
+                                    if(q==threelooses.get(0).col1 && e==threelooses.get(0).col2 && b==threelooses.get(0).col3){
+                                        System.out.println("loser!!!!!!!!!!!!!");
+                                        threewins.add(new Board(z, t, p));
                                     }
+
+                                    //now identify the rest of the loose boards
+                                    //then go back and say the ones with a loose board as an option are win boards
+
                                 }
                             }
                         }
