@@ -7,15 +7,12 @@ public class MyPlayer {
     ArrayList<Board> threethreeboards;
     ArrayList<Board> threelooses;
     ArrayList<Board> threewins;
-    ArrayList<Board> resultingarray;
-    public boolean winloose;
 
     public MyPlayer() {
         columns = new int[10];
         threethreeboards=new ArrayList<>();
         threelooses=new ArrayList<>();
         threewins=new ArrayList<>();
-        resultingarray=new ArrayList<>();
 
         /***
          * This code will run just once, when the game opens.
@@ -81,9 +78,6 @@ public class MyPlayer {
                     System.out.println(z+""+t+""+p);//this makes the 19 boards
                     System.out.println("top*********");
 
-                    resultingarray.clear();
-                    winloose=true;
-
                     boolean foundlooseboolean = false; //if this is false then its a loose board
 
                     for(int q=1; q<=z; q++) {
@@ -92,15 +86,10 @@ public class MyPlayer {
                                 if(!(q==z && e==t && b==p) && !(q<z && e<t && q!=e) && !(e<t && b<p && e!=b) && !(q<z && b<p && q!=b)){
                                     System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
 
-                                   resultingarray.add(new Board(q,e,b));
-
                                     for(int h=0; h<threelooses.size(); h++) {
                                         if (q == threelooses.get(h).col1 && e == threelooses.get(h).col2 && b == threelooses.get(h).col3) {
                                             threewins.add(new Board(z, t, p));
-                                            System.out.println("found loose");
-                                            foundlooseboolean = true;
-                                        } else {
-                                            threelooses.add(new Board(z, t, p));
+                                            foundlooseboolean=true;
                                         }
                                     }
 
@@ -109,28 +98,8 @@ public class MyPlayer {
                         }
                     }
 
-                    if(threewins.size()>0 && resultingarray.size()>0) {
-
-                        for (int x = 0; x < threewins.size(); x++) {
-                            for (int v = 0; v < resultingarray.size(); v++) {
-                                if (!(resultingarray.get(v).col1 == threewins.get(x).col1 && resultingarray.get(v).col2 == threewins.get(x).col2 && resultingarray.get(v).col3 == threewins.get(x).col3)) {
-                                    winloose = false;
-
-                                    //use this if statement to compare every resulting board to every win board. If they are all win boards, then add z,t,p to the loose boards and repeat everything
-                                    //figure out how to do only add if every resulting board matches to at least one win board
-
-                                    //boolean: if one of them doesn't match turn it off
-                                }
-                            }
-                        }
-                    }
-
-                    if(winloose==false){
-                        threewins.add(new Board(z,t,p));
-                        System.out.println("This is a win board");
-                    }else{
-                        threelooses.add(new Board(z,t,p));
-                        System.out.println("This is a loose board");
+                    if (foundlooseboolean==false){
+                        threelooses.add(new Board(z, t, p));
                     }
 
                     System.out.println("end*********");
@@ -139,11 +108,18 @@ public class MyPlayer {
             }
         }
 
-        for(int t=0; t<threewins.size(); t++){
-            threewins.get(t).printInfo();
-        }
-        for(int f=0; f<threelooses.size(); f++){
-            threelooses.get(f).printInfo();
+        //how to get rid of the repeats that show up here?? But it's correct, just repeating for some reason
+
+        if(threewins.size()>0&&threelooses.size()>0) {
+
+            System.out.println("winners");
+            for (int l = 0; l < threewins.size(); l++) {
+                threewins.get(l).printInfo();
+            }
+            System.out.println("losers");
+            for (int o = 0; o < threelooses.size(); o++) {
+                threelooses.get(o).printInfo();
+            }
         }
 
     }
