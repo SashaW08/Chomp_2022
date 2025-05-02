@@ -32,7 +32,7 @@ public class MyPlayer {
         column = 1;
 
         toColumns();
-        threebythreeallboards();
+        threebythreemyplayermove();
 
         /***
          * This code will run each time the "MyPlayer" button is pressed.
@@ -66,9 +66,11 @@ public class MyPlayer {
 
     }
 
-    public void threebythreeallboards(){
+    public void threebythreemyplayermove(){
 
-        threelooses.add(new Board(1,0,0));
+        //the next step is figure out how to translate the info I have about win/loose boards into which is the best move to make
+        //you make the move that makes the board turn into a loose board
+        //look at how the game makes a move (the code)
 
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
@@ -78,7 +80,7 @@ public class MyPlayer {
                     System.out.println(z+""+t+""+p);//this makes the 19 boards
                     System.out.println("top*********");
 
-                    boolean foundlooseboolean = false; //if this is false then its a loose board
+                    boolean foundlooseboolean = false; //if this is false then it's a loose board
 
                     for(int q=1; q<=z; q++) {
                         for (int e=0; e<=t&&e<=q; e++){
@@ -86,10 +88,10 @@ public class MyPlayer {
                                 if(!(q==z && e==t && b==p) && !(q<z && e<t && q!=e) && !(e<t && b<p && e!=b) && !(q<z && b<p && q!=b)){
                                     System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
 
-                                    for(int h=0; h<threelooses.size(); h++) {
-                                        if (q == threelooses.get(h).col1 && e == threelooses.get(h).col2 && b == threelooses.get(h).col3) {
+                                    for (int h=0; h<threelooses.size(); h++) {
+                                        if (q==threelooses.get(h).col1 && e==threelooses.get(h).col2 && b==threelooses.get(h).col3) {
                                             threewins.add(new Board(z, t, p));
-                                            foundlooseboolean=true;
+                                            foundlooseboolean = true;
                                         }
                                     }
 
@@ -112,13 +114,17 @@ public class MyPlayer {
 
         if(threewins.size()>0&&threelooses.size()>0) {
 
-            System.out.println("winners");
+            System.out.println("winners:");
             for (int l = 0; l < threewins.size(); l++) {
                 threewins.get(l).printInfo();
             }
-            System.out.println("losers");
+            System.out.println("losers:");
             for (int o = 0; o < threelooses.size(); o++) {
                 threelooses.get(o).printInfo();
+            }
+            System.out.println("all boards:");
+            for(int o=0; o<threethreeboards.size(); o++){
+                threethreeboards.get(o).printInfo();
             }
         }
 
