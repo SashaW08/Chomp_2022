@@ -7,6 +7,8 @@ public class MyPlayer {
     ArrayList<Board> threethreeboards;
     ArrayList<Board> threelooses;
     ArrayList<Board> threewins;
+    public int x;
+    public int y;
 
     public MyPlayer() {
         columns = new int[10];
@@ -27,7 +29,6 @@ public class MyPlayer {
         gameBoard = pBoard;
         int column = 0;
         int row = 0;
-
         row = 1;
         column = 1;
 
@@ -40,7 +41,7 @@ public class MyPlayer {
          * You'll be returning a data type called Point which consists of two integers.
          */
 
-        Point myMove = new Point(row, column);
+        Point myMove = new Point(x, y);
         return myMove;
     }
 
@@ -68,9 +69,9 @@ public class MyPlayer {
 
     public void threebythreemyplayermove(){
 
-        //the next step is figure out how to translate the info I have about win/loose boards into which is the best move to make
-        //you make the move that makes the board turn into a loose board
-        //look at how the game makes a move (the code)
+        //the next step is to have myPlayer look at and take in the info of the board (after I move) before it makes its move
+        //I know this is the issue because the program is listening to the newPoint(x,y) correctly, which means x and y are what they're supposed to be
+
 
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
@@ -86,11 +87,31 @@ public class MyPlayer {
                         for (int e=0; e<=t&&e<=q; e++){
                             for (int b=0; b<=e&&b<=p; b++){
                                 if(!(q==z && e==t && b==p) && !(q<z && e<t && q!=e) && !(e<t && b<p && e!=b) && !(q<z && b<p && q!=b)){
-                                    System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
+                                    //System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
 
                                     for (int h=0; h<threelooses.size(); h++) {
                                         if (q==threelooses.get(h).col1 && e==threelooses.get(h).col2 && b==threelooses.get(h).col3) {
                                             threewins.add(new Board(z, t, p));
+                                            if(foundlooseboolean==false) { //this is so it only prints the first resulting loose board found
+                                                System.out.println(q + "" + e + "" + b);
+                                                int differencecol1=z-q;
+                                                int differencecol2=t-e;
+                                                int differencecol3=p-b;
+                                                System.out.println("Column differences: "+differencecol1+differencecol2+differencecol3);
+                                                if(differencecol1!=0){
+                                                    x=0;
+                                                    y=z-differencecol1;
+                                                    System.out.println("Correct move: ("+x+", "+y+")");
+                                                }else if(differencecol2!=0){
+                                                    x=1;
+                                                    y=t-differencecol2;
+                                                    System.out.println("Correct move: ("+x+", "+y+")");
+                                                }else if(differencecol3!=0){
+                                                    x=2;
+                                                    y=p-differencecol3;
+                                                    System.out.println("Correct move: ("+x+", "+y+")");
+                                                }
+                                            }
                                             foundlooseboolean = true;
                                         }
                                     }
