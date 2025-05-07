@@ -48,7 +48,7 @@ public class MyPlayer {
 
     public void toColumns(){
 
-        //columns is used to tell the computer what board it is looking at
+        //columns here is used to tell the computer what board it is looking at
 
         for(int x=0; x<10; x++){
             columns[x]=0;
