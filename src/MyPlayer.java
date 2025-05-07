@@ -10,6 +10,8 @@ public class MyPlayer {
     public int x;
     public int y;
     public Board m;
+    public int x1;
+    public int y1;
 
     public MyPlayer() {
         columns = new int[10];
@@ -28,10 +30,6 @@ public class MyPlayer {
         System.out.println("MyPlayer Move");
 
         gameBoard = pBoard;
-        int column = 0;
-        int row = 0;
-        row = 1;
-        column = 1;
 
         toColumns();
         threebythreemyplayermove();
@@ -42,7 +40,16 @@ public class MyPlayer {
          * You'll be returning a data type called Point which consists of two integers.
          */
 
-        Point myMove = new Point(x, y);
+        for(int g=0; g<threethreeboards.size(); g++) {
+            if (threethreeboards.get(g).col1==columns[0] && threethreeboards.get(g).col2 == columns[1] && threethreeboards.get(g).col3 == columns[2]) {
+                x1=threethreeboards.get(g).bestx;
+                y1=threethreeboards.get(g).besty;
+            }
+        }
+
+        System.out.println("^^^^^^^^^^^^^^"+x1+y1); //this shows that it correctly knows what the best move is, the chip just doesn't go away for some reason?? I'm confused
+
+        Point myMove = new Point(x1, y1);
         return myMove;
     }
 
