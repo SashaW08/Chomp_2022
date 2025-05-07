@@ -4,11 +4,12 @@ import java.util.ArrayList;
 public class MyPlayer {
     public Chip[][] gameBoard;
     public int[] columns;
-    ArrayList<Board> threethreeboards;
-    ArrayList<Board> threelooses;
-    ArrayList<Board> threewins;
+    public ArrayList<Board> threethreeboards;
+    public ArrayList<Board> threelooses;
+    public ArrayList<Board> threewins;
     public int x;
     public int y;
+    public Board m;
 
     public MyPlayer() {
         columns = new int[10];
@@ -47,6 +48,8 @@ public class MyPlayer {
 
     public void toColumns(){
 
+        //columns is used to tell the computer what board it is looking at
+
         for(int x=0; x<10; x++){
             columns[x]=0;
         }
@@ -69,14 +72,10 @@ public class MyPlayer {
 
     public void threebythreemyplayermove(){
 
-        //the next step is to have myPlayer look at and take in the info of the board (after I move) before it makes its move
-        //I know this is the issue because the program is listening to the newPoint(x,y) correctly, which means x and y are what they're supposed to be
-
-
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
                 for (int p=0; p<=t; p++) {
-                    threethreeboards.add(new Board(z,t,p));
+                    m=new Board(z,t,p,0,z-1);
 
                     System.out.println(z+""+t+""+p);//this makes the 19 boards
                     System.out.println("top*********");
@@ -91,7 +90,6 @@ public class MyPlayer {
 
                                     for (int h=0; h<threelooses.size(); h++) {
                                         if (q==threelooses.get(h).col1 && e==threelooses.get(h).col2 && b==threelooses.get(h).col3) {
-                                            threewins.add(new Board(z, t, p));
                                             if(foundlooseboolean==false) { //this is so it only prints the first resulting loose board found
                                                 System.out.println(q + "" + e + "" + b);
                                                 int differencecol1=z-q;
@@ -102,27 +100,34 @@ public class MyPlayer {
                                                     x=0;
                                                     y=z-differencecol1;
                                                     System.out.println("Correct move: ("+x+", "+y+")");
+                                                    m.bestx=x;
+                                                    m.besty=y;
                                                 }else if(differencecol2!=0){
                                                     x=1;
                                                     y=t-differencecol2;
                                                     System.out.println("Correct move: ("+x+", "+y+")");
+                                                    m.bestx=x;
+                                                    m.besty=y;
                                                 }else if(differencecol3!=0){
                                                     x=2;
                                                     y=p-differencecol3;
                                                     System.out.println("Correct move: ("+x+", "+y+")");
+                                                    m.bestx=x;
+                                                    m.besty=y;
                                                 }
+                                                threewins.add(m);
                                             }
                                             foundlooseboolean = true;
                                         }
                                     }
-
                                 }
                             }
                         }
                     }
+                    threethreeboards.add(m);
 
                     if (foundlooseboolean==false){
-                        threelooses.add(new Board(z, t, p));
+                        threelooses.add(m);
                     }
 
                     System.out.println("end*********");
@@ -131,13 +136,11 @@ public class MyPlayer {
             }
         }
 
-        //how to get rid of the repeats that show up here?? But it's correct, just repeating for some reason
-
         if(threewins.size()>0&&threelooses.size()>0) {
 
             System.out.println("winners:");
-            for (int l = 0; l < threewins.size(); l++) {
-                threewins.get(l).printInfo();
+            for (int o = 0; o < threewins.size(); o++) {
+                threewins.get(o).printInfo();
             }
             System.out.println("losers:");
             for (int o = 0; o < threelooses.size(); o++) {
