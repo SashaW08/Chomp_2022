@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class MyPlayer {
     public Chip[][] gameBoard;
     public int[] columns;
-    public ArrayList<Board> threethreeboards;
-    public ArrayList<Board> threelooses;
-    public ArrayList<Board> threewins;
+    public ArrayList<Board> tentenboards;
+    public ArrayList<Board> tenlooses;
+    public ArrayList<Board> tenwins;
     public int x;
     public int y;
     public Board m;
@@ -15,9 +15,9 @@ public class MyPlayer {
 
     public MyPlayer() {
         columns = new int[10];
-        threethreeboards=new ArrayList<>();
-        threelooses=new ArrayList<>();
-        threewins=new ArrayList<>();
+        tentenboards=new ArrayList<>();
+        tenlooses=new ArrayList<>();
+        tenwins=new ArrayList<>();
 
         /***
          * This code will run just once, when the game opens.
@@ -32,7 +32,7 @@ public class MyPlayer {
         gameBoard = pBoard;
 
         toColumns();
-        threebythreemyplayermove();
+        tentenmyplayermove();
 
         /***
          * This code will run each time the "MyPlayer" button is pressed.
@@ -40,22 +40,20 @@ public class MyPlayer {
          * You'll be returning a data type called Point which consists of two integers.
          */
 
-        for(int g=0; g<threethreeboards.size(); g++) {
-            if (threethreeboards.get(g).col1==columns[0] && threethreeboards.get(g).col2 == columns[1] && threethreeboards.get(g).col3 == columns[2]) {
-                x1=threethreeboards.get(g).bestx;
-                y1=threethreeboards.get(g).besty;
+        for(int g=0; g<tentenboards.size(); g++) {
+            if (tentenboards.get(g).col1==columns[0] && tentenboards.get(g).col2 == columns[1] && tentenboards.get(g).col3 == columns[2] && tentenboards.get(g).col4 == columns[3] && tentenboards.get(g).col5 == columns[4] && tentenboards.get(g).col6 == columns[5] && tentenboards.get(g).col7 == columns[6] && tentenboards.get(g).col8 == columns[7] && tentenboards.get(g).col9 == columns[8] && tentenboards.get(g).col10 == columns[9]) {
+                x1=tentenboards.get(g).bestx;
+                y1=tentenboards.get(g).besty;
             }
         }
 
         System.out.println("^^^^^^^^^^^^^^"+x1+y1); //this shows that it correctly knows what the best move is, the chip just doesn't go away for some reason?? I'm confused
 
-        Point myMove = new Point(x1, y1);
+        Point myMove = new Point(y1,x1);
         return myMove;
     }
 
     public void toColumns(){
-
-        //columns here is used to tell the computer what board it is looking at
 
         for(int x=0; x<10; x++){
             columns[x]=0;
@@ -77,7 +75,7 @@ public class MyPlayer {
 
     }
 
-    public void threebythreemyplayermove(){
+    public void tentenmyplayermove(){
 
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
@@ -95,8 +93,8 @@ public class MyPlayer {
                                 if(!(q==z && e==t && b==p) && !(q<z && e<t && q!=e) && !(e<t && b<p && e!=b) && !(q<z && b<p && q!=b)){
                                     //System.out.println(q+""+e+""+b);//print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
 
-                                    for (int h=0; h<threelooses.size(); h++) {
-                                        if (q==threelooses.get(h).col1 && e==threelooses.get(h).col2 && b==threelooses.get(h).col3) {
+                                    for (int h=0; h<tenlooses.size(); h++) {
+                                        if (q==tenlooses.get(h).col1 && e==tenlooses.get(h).col2 && b==tenlooses.get(h).col3) {
                                             if(foundlooseboolean==false) { //this is so it only prints the first resulting loose board found
                                                 System.out.println(q + "" + e + "" + b);
                                                 int differencecol1=z-q;
@@ -122,7 +120,7 @@ public class MyPlayer {
                                                     m.bestx=x;
                                                     m.besty=y;
                                                 }
-                                                threewins.add(m);
+                                                tenwins.add(m);
                                             }
                                             foundlooseboolean = true;
                                         }
@@ -131,10 +129,10 @@ public class MyPlayer {
                             }
                         }
                     }
-                    threethreeboards.add(m);
+                    tentenboards.add(m);
 
                     if (foundlooseboolean==false){
-                        threelooses.add(m);
+                        tenlooses.add(m);
                     }
 
                     System.out.println("end*********");
@@ -143,21 +141,20 @@ public class MyPlayer {
             }
         }
 
-        if(threewins.size()>0&&threelooses.size()>0) {
+        if(tenwins.size()>0&&tenlooses.size()>0) {
 
             System.out.println("winners:");
-            for (int o = 0; o < threewins.size(); o++) {
-                threewins.get(o).printInfo();
+            for (int o = 0; o < tenwins.size(); o++) {
+                tenwins.get(o).printInfo();
             }
             System.out.println("losers:");
-            for (int o = 0; o < threelooses.size(); o++) {
-                threelooses.get(o).printInfo();
+            for (int o = 0; o < tenlooses.size(); o++) {
+                tenlooses.get(o).printInfo();
             }
             System.out.println("all boards:");
-            for(int o=0; o<threethreeboards.size(); o++){
-                threethreeboards.get(o).printInfo();
+            for(int o=0; o<tentenboards.size(); o++){
+                tentenboards.get(o).printInfo();
             }
         }
-
     }
 }
