@@ -74,6 +74,9 @@ public class MyPlayer {
     }
 
     public void tentenmyplayermove(){
+        //try to grow to the 10x10 board
+        //How to optimize everything?
+        //The resulting boards seem to be the biggest issue here, but I can't figure out what to do with it
 
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
