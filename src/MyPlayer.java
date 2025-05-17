@@ -87,11 +87,13 @@ public class MyPlayer {
 
                     boolean foundlooseboolean = false; //if this is false then it's a loose board
 
+                    //it has to equal the one before it, unless the one before it didn't go down
+
                     for (int q = 1; q <= z; q++) {
                         for (int e = 0; e <= t && e <= q; e++) {
                             for (int b = 0; b <= e && b <= p; b++) {
                                 if (!(q == z && e == t && b == p) && !(q < z && e < t && q != e) && !(e < t && b < p && e != b) && !(q < z && b < p && q != b)) {
-                                    //System.out.println(q+""+e+b); //print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
+                                    System.out.println(q+""+e+b); //print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
 
                                     for (int h = 0; h < tenlooses.size(); h++) {
                                         if (q == tenlooses.get(h).col1 && e == tenlooses.get(h).col2 && b == tenlooses.get(h).col3) {
