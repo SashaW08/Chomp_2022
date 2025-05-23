@@ -76,7 +76,7 @@ public class MyPlayer {
     public void tentenmyplayermove(){
         //try to grow to the 10x10 board
         //How to optimize everything?
-        //The resulting boards seem to be the biggest issue here, the better way is by changing something in te three loops and getting rid of the if statement
+        //Change the resulting boards by changing something in the three loops and getting rid of the if statement
 
         for(int z=1; z<=3; z++) {
             for (int t=0; t<=z; t++) {
@@ -88,12 +88,15 @@ public class MyPlayer {
                     boolean foundlooseboolean = false; //if this is false then it's a loose board
 
                     //it has to equal the one before it, unless the one before it didn't go down
+                    //this seems hard to do without an if statement, so maybe I'm thinking about it the wrong way?
+                    //right now the issue is that some of the resulting boards would only be possible after two moves
+                    //also some resulting boards are equal to the board itself
 
-                    for (int q = 1; q <= z; q++) {
-                        for (int e = 0; e <= t && e <= q; e++) {
+                    for (int q = 1; q <= z; q++) { //seems like there can be nothing to change on this line
+                        for (int e = 0; e <= t && e <= q; e++) { //probably the same thing to be added to both of these lines (respectively)
                             for (int b = 0; b <= e && b <= p; b++) {
-                                if (!(q == z && e == t && b == p) && !(q < z && e < t && q != e) && !(e < t && b < p && e != b) && !(q < z && b < p && q != b)) {
-                                    System.out.println(q+""+e+b); //print out every single board before that one but not the ones where the column to the right goes to  level lower than the column to the left and the column to the left went down more than zero
+                                //if (!(q == z && e == t && b == p) && !(q < z && e < t && q != e) && !(e < t && b < p && e != b) && !(q < z && b < p && q != b)) {
+                                    System.out.println(q+""+e+b);
 
                                     for (int h = 0; h < tenlooses.size(); h++) {
                                         if (q == tenlooses.get(h).col1 && e == tenlooses.get(h).col2 && b == tenlooses.get(h).col3) {
@@ -107,19 +110,19 @@ public class MyPlayer {
                                                 if (diffcol1 != 0) {
                                                     x = 0;
                                                     y = z - diffcol1;
-                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                    System.out.println("Correct move: ("+x+", "+y+")");
                                                     m.bestx = x;
                                                     m.besty = y;
                                                 } else if (diffcol2 != 0) {
                                                     x = 1;
                                                     y = t - diffcol2;
-                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                    System.out.println("Correct move: ("+x+", "+y+")");
                                                     m.bestx = x;
                                                     m.besty = y;
                                                 } else if (diffcol3 != 0) {
                                                     x = 2;
                                                     y = p - diffcol3;
-                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                    System.out.println("Correct move: ("+x+", "+y+")");
                                                     m.bestx = x;
                                                     m.besty = y;
                                                 }
@@ -128,7 +131,7 @@ public class MyPlayer {
                                             foundlooseboolean = true;
                                         }
                                     }
-                                }
+                                //}
                             }
                         }
                     }
