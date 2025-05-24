@@ -187,11 +187,11 @@ public class MyPlayer {
                             second = q;
                         }
 
-                        if(third<second) {
-                            third = second;
+                        if(q<third) {
+                            third = q;
                         }
 
-                        //somehow its 112 instead of 111????
+                        //why is the last group still not working??
 
                         System.out.println(q + "" + second + third);
 
