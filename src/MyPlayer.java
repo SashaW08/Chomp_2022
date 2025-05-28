@@ -75,187 +75,189 @@ public class MyPlayer {
 
     public void tentenmyplayermove(){
 
-        for(int z=1; z<=3; z++) {
+        for(int z=1; z<=10; z++) {
             for (int t=0; t<=z; t++) {
                 for (int p = 0; p <= t; p++) {
-                    m = new Board(z,t,p, 0, z - 1);
+                    for(int r1 = 0; r1<=p; r1++ ) {
+                        for (int r2 = 0; r2<=r1; r2++) {
+                            for (int r3 = 0; r3<=r2; r3++) {
+                                for (int r4 = 0; r4<=r3; r4++) {
+                                    for (int r5 = 0; r5<=r4; r5++) {
+                                        for (int r6 = 0; r6<=r5; r6++) {
+                                            for (int r7 = 0; r7<=r6; r7++) {
 
-                    System.out.println(z+""+t+p+"THIS BOARD");//this makes the 19 boards
+                                                m = new Board(z,t,p,r1,r2,r3,r4,r5,r6,r7, 0, z - 1);
 
-                    boolean foundlooseboolean = false; //if this is false then it's a loose board
+                                                System.out.println(z+", "+t+", "+p+", "+r1+", "+r2+", "+r3+", "+r4+", "+r5+", "+r6+", "+r7+" THIS BOARD");
 
-                    int first=z;
-                    int second=t;
-                    int third=p;
+                                                boolean foundlooseboolean = false;
 
+                                                int first = z;
+                                                int second = t;
+                                                int third = p;
+                                                int fourth = r1;
+                                                int fifth = r2;
+                                                int sixth = r3;
+                                                int seventh = r4;
+                                                int eigth = r5;
+                                                int ninth = r6;
+                                                int tenth = r7;
 
-                    for (int b=p-1; b>=0; b--) {
-                        System.out.println(first+""+second+b);
+                                                for (int b = p - 1; b >= 0; b--) {
+                                                    //System.out.println(first+""+second+b);
+                                                    for (int h = 0; h < tenlooses.size(); h++) {
+                                                        if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && b == tenlooses.get(h).col3) {
+                                                            if (foundlooseboolean == false) { //this is so it only prints the first resulting loose board found
+                                                                System.out.print("First loose board: ");
+                                                                System.out.println(first + "" + second + b);
+                                                                int diffcol1 = z - first;
+                                                                int diffcol2 = t - second;
+                                                                int diffcol3 = p - b;
+                                                                System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3);
+                                                                if (diffcol1 != 0) {
+                                                                    x = 0;
+                                                                    y = z - diffcol1;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (diffcol2 != 0) {
+                                                                    x = 1;
+                                                                    y = t - diffcol2;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (diffcol3 != 0) {
+                                                                    x = 2;
+                                                                    y = p - diffcol3;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
+                                                            }
+                                                            foundlooseboolean = true;
+                                                        }
+                                                    }
+                                                }
 
-                        for (int h = 0; h < tenlooses.size(); h++) {
-                            if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && b == tenlooses.get(h).col3) {
-                                if (foundlooseboolean == false) { //this is so it only prints the first resulting loose board found
-                                    System.out.print("First loose board: ");
-                                    System.out.println(first + "" + second + "" + b);
-                                    int diffcol1 = z - first;
-                                    int diffcol2 = t - second;
-                                    int diffcol3 = p - b;
-                                    System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3);
-                                    if (diffcol1 != 0) {
-                                        x = 0;
-                                        y = z - diffcol1;
-                                        System.out.println("Correct move: ("+x+", "+y+")");
-                                        m.bestx = x;
-                                        m.besty = y;
-                                    } else if (diffcol2 != 0) {
-                                        x = 1;
-                                        y = t - diffcol2;
-                                        System.out.println("Correct move: ("+x+", "+y+")");
-                                        m.bestx = x;
-                                        m.besty = y;
-                                    } else if (diffcol3 != 0) {
-                                        x = 2;
-                                        y = p - diffcol3;
-                                        System.out.println("Correct move: ("+x+", "+y+")");
-                                        m.bestx = x;
-                                        m.besty = y;
-                                    }
-                                    tenwins.add(m);
-                                }
-                                foundlooseboolean = true;
-                            }
-                        }
+                                                for (int e = t - 1; e >= 0; e--) {
 
-                        third=p;
+                                                    if (e < third) {
+                                                        third = e;
+                                                    }
+                                                    //System.out.println(first + "" + e + third);
+                                                    for (int h = 0; h < tenlooses.size(); h++) {
+                                                        if (first == tenlooses.get(h).col1 && e == tenlooses.get(h).col2 && third == tenlooses.get(h).col3) {
+                                                            if (foundlooseboolean == false) { //this is so it only prints the first resulting loose board found
+                                                                System.out.print("First loose board: ");
+                                                                System.out.println(first + "" + e + "" + third);
+                                                                int diffcol1 = z - first;
+                                                                int diffcol2 = t - e;
+                                                                int diffcol3 = p - third;
+                                                                System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3);
+                                                                if (diffcol1 != 0) {
+                                                                    x = 0;
+                                                                    y = z - diffcol1;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (diffcol2 != 0) {
+                                                                    x = 1;
+                                                                    y = t - diffcol2;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (diffcol3 != 0) {
+                                                                    x = 2;
+                                                                    y = p - diffcol3;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
+                                                            }
+                                                            foundlooseboolean = true;
+                                                        }
+                                                    }
+                                                    third = p;
+                                                }
 
-                    }
+                                                for (int q = z - 1; q >= 1; q--) {
 
-                    System.out.println("**************");
+                                                    if (q < second) {
+                                                        second = q;
+                                                    }
 
+                                                    if (q < third) {
+                                                        third = q;
+                                                    }
+                                                    //System.out.println(q + "" + second + third);
+                                                    for (int h = 0; h < tenlooses.size(); h++) {
+                                                        if (q == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3) {
+                                                            if (foundlooseboolean == false) {
+                                                                System.out.print("First loose board: ");
+                                                                System.out.println(q + "" + second + third);
+                                                                int diffcol1 = z - q;
+                                                                int diffcol2 = t - second;
+                                                                int diffcol3 = p - third;
+                                                                System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3);
+                                                                if (diffcol1 != 0) {
+                                                                    x = 0;
+                                                                    y = z - diffcol1;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (diffcol2 != 0) {
+                                                                    x = 1;
+                                                                    y = t - diffcol2;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (diffcol3 != 0) {
+                                                                    x = 2;
+                                                                    y = p - diffcol3;
+                                                                    System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
+                                                            }
+                                                            foundlooseboolean = true;
+                                                        }
+                                                    }
+                                                }
 
-                    for (int e=t-1; e>=0; e--) {
+                                                tentenboards.add(m);
 
-                        if(e<third) {
-                            third = e;
-                        }
-                        System.out.println(first + "" + e + third);
+                                                if (foundlooseboolean == false) {
+                                                    tenlooses.add(m);
+                                                } else {
+                                                    tenwins.add(m);
+                                                }
 
-
-                        for (int h = 0; h < tenlooses.size(); h++) {
-                                if (first == tenlooses.get(h).col1 && e == tenlooses.get(h).col2 && third == tenlooses.get(h).col3) {
-                                    if (foundlooseboolean == false) { //this is so it only prints the first resulting loose board found
-                                        System.out.print("First loose board: ");
-                                        System.out.println(first + "" + e + "" + third);
-                                        int diffcol1 = z - first;
-                                        int diffcol2 = t - e;
-                                        int diffcol3 = p - third;
-                                        System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3);
-                                        if (diffcol1 != 0) {
-                                            x = 0;
-                                            y = z - diffcol1;
-                                            System.out.println("Correct move: (" + x + ", " + y + ")");
-                                            m.bestx = x;
-                                            m.besty = y;
-                                        } else if (diffcol2 != 0) {
-                                            x = 1;
-                                            y = t - diffcol2;
-                                            System.out.println("Correct move: (" + x + ", " + y + ")");
-                                            m.bestx = x;
-                                            m.besty = y;
-                                        } else if (diffcol3 != 0) {
-                                            x = 2;
-                                            y = p - diffcol3;
-                                            System.out.println("Correct move: (" + x + ", " + y + ")");
-                                            m.bestx = x;
-                                            m.besty = y;
+                                                System.out.println();
+                                            }
                                         }
-                                        tenwins.add(m);
                                     }
-                                    foundlooseboolean = true;
                                 }
-                        }
-
-                        second = t;
-
-                    }
-
-                    System.out.println("****************");
-
-                    for (int q=z-1; q>=1; q--) {
-
-                        if(q<second) {
-                            second = q;
-                        }
-
-                        if(q<third) {
-                            third = q;
-                        }
-
-                        //why is the last group still not working??
-
-                        System.out.println(q + "" + second + third);
-
-                        for (int h = 0; h < tenlooses.size(); h++) {
-                            if (q == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3) {
-                                if (foundlooseboolean == false) { //this is so it only prints the first resulting loose board found
-                                    System.out.print("First loose board: ");
-                                    System.out.println(q + "" + second + "" + third);
-                                    int diffcol1 = z - q;
-                                    int diffcol2 = t - second;
-                                    int diffcol3 = p - third;
-                                    System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3);
-                                    if (diffcol1 != 0) {
-                                        x = 0;
-                                        y = z - diffcol1;
-                                        System.out.println("Correct move: ("+x+", "+y+")");
-                                        m.bestx = x;
-                                        m.besty = y;
-                                    } else if (diffcol2 != 0) {
-                                        x = 1;
-                                        y = t - diffcol2;
-                                        System.out.println("Correct move: ("+x+", "+y+")");
-                                        m.bestx = x;
-                                        m.besty = y;
-                                    } else if (diffcol3 != 0) {
-                                        x = 2;
-                                        y = p - diffcol3;
-                                        System.out.println("Correct move: ("+x+", "+y+")");
-                                        m.bestx = x;
-                                        m.besty = y;
-                                    }
-                                    tenwins.add(m);
-                                }
-                                foundlooseboolean = true;
                             }
                         }
                     }
-
-
-                    tentenboards.add(m);
-
-                    if (foundlooseboolean == false) {
-                        tenlooses.add(m);
-                    }
-
-                    System.out.println();
                 }
             }
         }
 
-        if(tenwins.size()>0&&tenlooses.size()>0) {
-
-            System.out.println("winners:");
-            for (int o = 0; o < tenwins.size(); o++) {
-                tenwins.get(o).printInfo();
-            }
-            System.out.println("losers:");
-            for (int o = 0; o < tenlooses.size(); o++) {
-                tenlooses.get(o).printInfo();
-            }
-            System.out.println("all boards:");
-            for(int o=0; o<tentenboards.size(); o++){
-                tentenboards.get(o).printInfo();
-            }
-        }
+//        if(tenwins.size()>0&&tenlooses.size()>0) {
+//
+//            System.out.println("winners:");
+//            for (int o = 0; o < tenwins.size(); o++) {
+//                tenwins.get(o).printInfo();
+//            }
+//            System.out.println("losers:");
+//            for (int o = 0; o < tenlooses.size(); o++) {
+//                tenlooses.get(o).printInfo();
+//            }
+//            System.out.println("all boards:");
+//            for(int o=0; o<tentenboards.size(); o++){
+//                tentenboards.get(o).printInfo();
+//            }
+//        }
     }
 }
