@@ -181,6 +181,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break; //figure out when to say break so that when it finds the loose board it stops looking at the other resulting boards for that board
                                                         }
                                                     }
                                                 }
@@ -271,6 +272,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     tenth=r7;
@@ -365,6 +367,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     ninth=r6;
@@ -463,6 +466,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     eigth=r5;
@@ -565,6 +569,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     seventh=r4;
@@ -671,6 +676,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     sixth=r3;
@@ -781,6 +787,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     fifth=r2;
@@ -895,6 +902,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     fourth=r1;
@@ -1013,6 +1021,7 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                     third = p;
@@ -1135,11 +1144,12 @@ public class MyPlayer {
                                                                 }
                                                             }
                                                             foundlooseboolean = true;
+                                                            break;
                                                         }
                                                     }
                                                 }
 
-                                                tentenboards.add(m);
+                                                //tentenboards.add(m);
 
                                                 if (foundlooseboolean == false) {
                                                     tenlooses.add(m);
