@@ -19,10 +19,7 @@ public class MyPlayer {
         tenlooses=new ArrayList<>();
         tenwins=new ArrayList<>();
 
-        /***
-         * This code will run just once, when the game opens.
-         * Add your code here.
-         */
+        tentenmyplayermove();
     }
 
     public Point move(Chip[][] pBoard) {
@@ -32,7 +29,6 @@ public class MyPlayer {
         gameBoard = pBoard;
 
         toColumns();
-        tentenmyplayermove();
 
         /***
          * This code will run each time the "MyPlayer" button is pressed.
@@ -88,7 +84,7 @@ public class MyPlayer {
 
                                                 m = new Board(z,t,p,r1,r2,r3,r4,r5,r6,r7, 0, z - 1);
 
-                                                //System.out.println(z+", "+t+", "+p+", "+r1+", "+r2+", "+r3+", "+r4+", "+r5+", "+r6+", "+r7+" THIS BOARD");
+                                                System.out.println(z+", "+t+", "+p+", "+r1+", "+r2+", "+r3+", "+r4+", "+r5+", "+r6+", "+r7);
 
                                                 boolean foundlooseboolean = false;
 
@@ -102,8 +98,6 @@ public class MyPlayer {
                                                 int eigth = r5;
                                                 int ninth = r6;
                                                 int tenth = r7;
-
-                                                //the job is to now fix the spelled out number statements below
 
                                                 for(int f1 = r7-1; f1>=0; f1--){
                                                     //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
@@ -292,7 +286,6 @@ public class MyPlayer {
                                                         tenth = f3;
                                                     }
 
-
                                                     for (int h = 0; h < tenlooses.size(); h++) {
                                                         if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && f3 == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
                                                             if (foundlooseboolean == false) { //this is so it only prints the first resulting loose board found
@@ -390,7 +383,6 @@ public class MyPlayer {
                                                     if (f4 < tenth) {
                                                         tenth = f4;
                                                     }
-
 
                                                     for (int h = 0; h < tenlooses.size(); h++) {
                                                         if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && f4 == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
