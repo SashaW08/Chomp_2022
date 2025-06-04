@@ -12,7 +12,6 @@ public class MyPlayer {
     public Board m;
     public int x1;
     public int y1;
-    public boolean out=false;
 
     public MyPlayer() {
         columns = new int[10];
@@ -43,6 +42,8 @@ public class MyPlayer {
                 y1=tentenboards.get(g).besty;
             }
         }
+
+        System.out.println("("+y1+", "+x1+")");
 
         Point myMove = new Point(y1,x1);
         return myMove;
@@ -100,93 +101,80 @@ public class MyPlayer {
                                                 int ninth = r6;
                                                 int tenth = r7;
 
-                                                out=false;
-
-                                                while(out==false) { //somehow this while loop makes it so that the program can never get past the first board
-
                                                     for (int f1 = r7 - 1; f1 >= 0; f1--) {
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
-
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && f1 == tenlooses.get(h).col10) {
 
                                                                     //System.out.print("First loose board: ");
                                                                     //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - f1;
                                                                     //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
+                                                                    if (z-first != 0) {
                                                                         x = 0;
-                                                                        y = z - diffcol1;
+                                                                        y = first;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
+                                                                    } else if (t-second != 0) {
                                                                         x = 1;
-                                                                        y = t - diffcol2;
+                                                                        y = second;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
+                                                                    } else if (p-third != 0) {
                                                                         x = 2;
-                                                                        y = p - diffcol3;
+                                                                        y = third;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
+                                                                    } else if (r1-fourth != 0) {
                                                                         x = 3;
-                                                                        y = r1 - diffcol4;
+                                                                        y = fourth;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
+                                                                    } else if (r2-fifth != 0) {
                                                                         x = 4;
-                                                                        y = r2 - diffcol5;
+                                                                        y = fifth;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
+                                                                    } else if (r3-sixth != 0) {
                                                                         x = 5;
-                                                                        y = r3 - diffcol6;
+                                                                        y = sixth;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
+                                                                    } else if (r4-seventh != 0) {
                                                                         x = 6;
-                                                                        y = r4 - diffcol7;
+                                                                        y = seventh;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
+                                                                    } else if (r5-eigth != 0) {
                                                                         x = 7;
-                                                                        y = r5 - diffcol8;
+                                                                        y = eigth;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
+                                                                    } else if (r6-ninth != 0) {
                                                                         x = 8;
-                                                                        y = r6 - diffcol9;
+                                                                        y = ninth;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
+                                                                    } else if (r7-tenth != 0) {
                                                                         x = 9;
-                                                                        y = r7 - diffcol10;
+                                                                        y = tenth;
                                                                         //System.out.println("Correct move: (" + x + ", " + y + ")");
                                                                         m.bestx = x;
                                                                         m.besty = y;
                                                                     }
-                                                                    out = true;
-                                                                    foundlooseboolean=true;
-
+                                                                foundlooseboolean=true;
+                                                                    break;
 
                                                             }
                                                         }
@@ -194,7 +182,9 @@ public class MyPlayer {
 
                                                     for (int f2 = r6 - 1; f2 >= 0; f2--) {
                                                         //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ f2+ tenth);
-
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         if (f2 < tenth) {
                                                             tenth = f2;
                                                         }
@@ -202,82 +192,72 @@ public class MyPlayer {
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && f2 == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
 
-                                                                    //System.out.print("First loose board: ");
-                                                                    // System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ f2+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - f2;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
                                                             }
                                                         }
                                                         tenth = r7;
@@ -285,7 +265,9 @@ public class MyPlayer {
 
                                                     for (int f3 = r5 - 1; f3 >= 0; f3--) {
                                                         //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ f3+ ninth+ tenth);
-
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         if (f3 < ninth) {
                                                             ninth = f3;
                                                         }
@@ -295,82 +277,72 @@ public class MyPlayer {
 
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && f3 == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
-                                                                    //System.out.print("First loose board: ");
-                                                                    //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ f3+ ninth+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - f3;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
                                                             }
                                                         }
                                                         ninth = r6;
@@ -378,6 +350,9 @@ public class MyPlayer {
                                                     }
 
                                                     for (int f4 = r4 - 1; f4 >= 0; f4--) {
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ f4+ eigth+ ninth+ tenth);
 
                                                         if (f4 < eigth) {
@@ -392,82 +367,72 @@ public class MyPlayer {
 
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && f4 == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
-                                                                    //System.out.print("First loose board: ");
-                                                                    //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ f4+ eigth+ ninth+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - f4;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
                                                             }
                                                         }
                                                         eigth = r5;
@@ -475,9 +440,12 @@ public class MyPlayer {
                                                         tenth = r7;
                                                     }
 
+
                                                     for (int f5 = r3 - 1; f5 >= 0; f5--) {
                                                         //System.out.println(first + "" + second + third+ fourth+ fifth+ f5+ seventh+ eigth+ ninth+ tenth);
-
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         if (f5 < seventh) {
                                                             seventh = f5;
                                                         }
@@ -494,84 +462,72 @@ public class MyPlayer {
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && f5 == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
 
-                                                                    //System.out.print("First loose board: ");
-                                                                    //System.out.println(first + "" + second + third+ fourth+ fifth+ f5+ seventh+ eigth+ ninth+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - f5;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    // System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
-
-
+                                                                    break;
                                                             }
                                                         }
                                                         seventh = r4;
@@ -581,6 +537,9 @@ public class MyPlayer {
                                                     }
 
                                                     for (int f6 = r2 - 1; f6 >= 0; f6--) {
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         //System.out.println(first + "" + second + third+ fourth+ f6+ sixth+ seventh+ eigth+ ninth+ tenth);
 
                                                         if (f6 < sixth) {
@@ -602,82 +561,72 @@ public class MyPlayer {
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && f6 == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
 
-                                                                    //System.out.print("First loose board: ");
-                                                                    //System.out.println(first + "" + second + third+ fourth+ f6+ sixth+ seventh+ eigth+ ninth+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - f6;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
 
                                                             }
                                                         }
@@ -689,6 +638,9 @@ public class MyPlayer {
                                                     }
 
                                                     for (int f7 = r1 - 1; f7 >= 0; f7--) {
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         //System.out.println( first+ "" + second + third+ f7+ fifth+ sixth+ seventh+ eigth+ ninth+ tenth);
 
                                                         if (f7 < fifth) {
@@ -712,82 +664,72 @@ public class MyPlayer {
 
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && f7 == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
-                                                                    //System.out.print("First loose board: ");
-                                                                    //System.out.println( first+ "" + second + third+ f7+ fifth+ sixth+ seventh+ eigth+ ninth+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - f7;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
                                                             }
                                                         }
                                                         fifth = r2;
@@ -799,6 +741,9 @@ public class MyPlayer {
                                                     }
 
                                                     for (int b = p - 1; b >= 0; b--) {
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
                                                         //System.out.println(first + "" + second + b+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ tenth);
 
                                                         if (b < fourth) {
@@ -825,82 +770,72 @@ public class MyPlayer {
 
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && b == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
-                                                                    //System.out.print("First loose board: ");
-                                                                    //System.out.println(first + "" + second + b+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - b;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
                                                             }
                                                         }
                                                         fourth = r1;
@@ -913,6 +848,9 @@ public class MyPlayer {
                                                     }
 
                                                     for (int e = t - 1; e >= 0; e--) {
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
 
                                                         if (e < third) {
                                                             third = e;
@@ -943,82 +881,72 @@ public class MyPlayer {
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (first == tenlooses.get(h).col1 && e == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
 
-                                                                    // System.out.print("First loose board: ");
-                                                                    //System.out.println(first + "" + e + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ tenth);
-                                                                    int diffcol1 = z - first;
-                                                                    int diffcol2 = t - e;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
                                                             }
                                                         }
                                                         third = p;
@@ -1032,6 +960,9 @@ public class MyPlayer {
                                                     }
 
                                                     for (int q = z - 1; q >= 1; q--) {
+                                                        if(foundlooseboolean==true){
+                                                            break;
+                                                        }
 
                                                         if (q < second) {
                                                             second = q;
@@ -1064,88 +995,75 @@ public class MyPlayer {
                                                         //System.out.println(q + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ tenth);
                                                         for (int h = 0; h < tenlooses.size(); h++) {
                                                             if (q == tenlooses.get(h).col1 && second == tenlooses.get(h).col2 && third == tenlooses.get(h).col3 && fourth == tenlooses.get(h).col4 && fifth == tenlooses.get(h).col5 && sixth == tenlooses.get(h).col6 && seventh == tenlooses.get(h).col7 && eigth == tenlooses.get(h).col8 && ninth == tenlooses.get(h).col9 && tenth == tenlooses.get(h).col10) {
-
-                                                                    //System.out.print("First loose board: ");
-                                                                    //System.out.println(q + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ tenth);
-                                                                    int diffcol1 = z - q;
-                                                                    int diffcol2 = t - second;
-                                                                    int diffcol3 = p - third;
-                                                                    int diffcol4 = r1 - fourth;
-                                                                    int diffcol5 = r2 - fifth;
-                                                                    int diffcol6 = r3 - sixth;
-                                                                    int diffcol7 = r4 - seventh;
-                                                                    int diffcol8 = r5 - eigth;
-                                                                    int diffcol9 = r6 - ninth;
-                                                                    int diffcol10 = r7 - tenth;
-                                                                    //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
-                                                                    if (diffcol1 != 0) {
-                                                                        x = 0;
-                                                                        y = z - diffcol1;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol2 != 0) {
-                                                                        x = 1;
-                                                                        y = t - diffcol2;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol3 != 0) {
-                                                                        x = 2;
-                                                                        y = p - diffcol3;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol4 != 0) {
-                                                                        x = 3;
-                                                                        y = r1 - diffcol4;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol5 != 0) {
-                                                                        x = 4;
-                                                                        y = r2 - diffcol5;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol6 != 0) {
-                                                                        x = 5;
-                                                                        y = r3 - diffcol6;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol7 != 0) {
-                                                                        x = 6;
-                                                                        y = r4 - diffcol7;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol8 != 0) {
-                                                                        x = 7;
-                                                                        y = r5 - diffcol8;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol9 != 0) {
-                                                                        x = 8;
-                                                                        y = r6 - diffcol9;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    } else if (diffcol10 != 0) {
-                                                                        x = 9;
-                                                                        y = r7 - diffcol10;
-                                                                        //System.out.println("Correct move: (" + x + ", " + y + ")");
-                                                                        m.bestx = x;
-                                                                        m.besty = y;
-                                                                    }
-                                                                    out=true;
+                                                                //System.out.print("First loose board: ");
+                                                                //System.out.println(first + "" + second + third+ fourth+ fifth+ sixth+ seventh+ eigth+ ninth+ f1);
+                                                                //System.out.println("Column differences: " + diffcol1 + diffcol2 + diffcol3+diffcol4+diffcol5+diffcol6+diffcol7+diffcol8+diffcol9+diffcol10);
+                                                                if (z-first != 0) {
+                                                                    x = 0;
+                                                                    y = first;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (t-second != 0) {
+                                                                    x = 1;
+                                                                    y = second;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (p-third != 0) {
+                                                                    x = 2;
+                                                                    y = third;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r1-fourth != 0) {
+                                                                    x = 3;
+                                                                    y = fourth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r2-fifth != 0) {
+                                                                    x = 4;
+                                                                    y = fifth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r3-sixth != 0) {
+                                                                    x = 5;
+                                                                    y = sixth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r4-seventh != 0) {
+                                                                    x = 6;
+                                                                    y = seventh;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r5-eigth != 0) {
+                                                                    x = 7;
+                                                                    y = eigth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r6-ninth != 0) {
+                                                                    x = 8;
+                                                                    y = ninth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                } else if (r7-tenth != 0) {
+                                                                    x = 9;
+                                                                    y = tenth;
+                                                                    //System.out.println("Correct move: (" + x + ", " + y + ")");
+                                                                    m.bestx = x;
+                                                                    m.besty = y;
+                                                                }
                                                                 foundlooseboolean=true;
+                                                                    break;
                                                             }
                                                         }
                                                     }
-                                                    out=true;
-                                                }
 
                                                 tentenboards.add(m);
 
